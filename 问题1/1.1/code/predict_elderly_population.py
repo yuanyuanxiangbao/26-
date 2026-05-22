@@ -28,6 +28,9 @@ n_years = 5
 
 print(f'参数: 死亡率={death_rate}, 新增率={birth_rate}, 自理→半失能={p_s2m}, 半失能→失能={p_m2d}')
 
+def round_half_up(x):
+    return int(np.floor(x + 0.5))
+
 # 初始化各小区老人数量
 n_communities = len(pop_df)
 communities = pop_df['小区'].tolist()
@@ -47,26 +50,34 @@ for year in range(1, n_years + 1):
     T_prev = S + M + D
     new_elderly = birth_rate * T_prev
     
-    S_survive = S * (1 - death_rate)
-    M_survive = M * (1 - death_rate)
-    D_survive = D * (1 - death_rate)
+    # 顺序: 新增→死亡→转移, 新老人同样面临死亡概率与转移风险
+    S_added = S + new_elderly
+    M_added = M
+    D_added = D
+    
+    S_survive = S_added * (1 - death_rate)
+    M_survive = M_added * (1 - death_rate)
+    D_survive = D_added * (1 - death_rate)
     
     s_to_m = S_survive * p_s2m
     m_to_d = M_survive * p_m2d
     
-    S_next = (S_survive - s_to_m) + new_elderly
+    S_next = S_survive - s_to_m
     M_next = M_survive - m_to_d + s_to_m
     D_next = D_survive + m_to_d
     
     S, M, D = S_next, M_next, D_next
     
     for i in range(n_communities):
+        s = round_half_up(S[i])
+        m = round_half_up(M[i])
+        d = round_half_up(D[i])
         results[f'year_{year}'].append({
             '小区': communities[i],
-            '自理': round(S[i]),
-            '半失能': round(M[i]),
-            '失能': round(D[i]),
-            '合计': round(S[i] + M[i] + D[i])
+            '自理': s,
+            '半失能': m,
+            '失能': d,
+            '合计': s + m + d
         })
 
 # 保存每年结果

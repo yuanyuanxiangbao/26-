@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>full</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+table {
+display: table; overflow: auto;
+max-width: 100%;
+border-collapse: collapse;
+page-break-inside: avoid;
+}
+table th {
+text-align: center;
+font-weight: bold;
+}
+table td,table th {
+border: 1px solid #dfe2e5;
+padding: 6px 13px;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #c6cbd1;
+}
+table tr:nth-child(2n) {
+background-color: #f6f8fa;
+}
+</style>
+</head>
+<body>
+<p>的位置函数可以表示为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐏</mi><mrow><mi mathvariant="normal">s</mi><mo>,</mo><mrow><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>𝐏</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mi>j</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>t</mi><mrow><mi>d</mi><mo>,</mo><mi>j</mi><mi>k</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>𝐯</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mi>j</mi></mrow></msub><mo>⋅</mo><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mrow><mi mathvariant="normal">d</mi><mo>,</mo><mrow><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow></mrow></msub><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>𝐠</mi><mo>⋅</mo><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mrow><mi mathvariant="normal">d</mi><mo>,</mo><mrow><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow></mrow></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mspace width="1.0em"></mspace><mi>t</mi><mo>≥</mo><msub><mi>t</mi><mrow><mi mathvariant="normal">d</mi><mo>,</mo><mrow><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow></mrow></msub><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\mathbf {P} _ {\mathrm{s}, \mathrm{jk}} (t) = \mathbf {P} _ {f y, j} (t _ {d, j k}) + \mathbf {v} _ {f y, j} \cdot (t - t _ {\mathrm{d}, \mathrm{jk}}) + \frac {1}{2} \mathbf {g} \cdot (t - t _ {\mathrm{d}, \mathrm{jk}}) ^ {2} \quad t \geq t _ {\mathrm{d}, \mathrm{jk}} \quad (j = 1, \dots , 5) (k = 1, 2, 3) \tag {5.6}
+</annotation></semantics></math></p>
+<p>其中
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐠</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mi>−</mi><mi>g</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{g} = (0,0, - g)</annotation></semantics></math>
+，
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+的大小取为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9.8</mn><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">/</mi><msup><mi mathvariant="normal">s</mi><mn mathvariant="normal">2</mn></msup></mrow></mrow><annotation encoding="application/x-tex">9.8\mathrm{m / s^2}</annotation></semantics></math></p>
+<h1 id="云团中心轨迹">5.1.4 云团中心轨迹</h1>
+<p>烟幕弹爆炸后形成的云团将以团以 3 m/s 的速度匀速下沉，记作
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mrow><mi>s</mi><mi>a</mi><mi>n</mi><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">v_{sank}</annotation></semantics></math>
+，要计算云团的轨迹必须要先计算出云团的起爆位置，而计算起爆位置必须要知道起爆时间，</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mi>b</mi><mo>,</mo><mi>j</mi><mi>k</mi></mrow></msub><mo>=</mo><msub><mi>t</mi><mrow><mi>d</mi><mo>,</mo><mi>j</mi><mi>k</mi></mrow></msub><mo>+</mo><mi mathvariant="normal">Δ</mi><msub><mi>t</mi><mrow><mi>b</mi><mo>,</mo><mi>j</mi><mi>k</mi></mrow></msub><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mi>.</mi><mi>.</mi><mi>.</mi><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+t _ {b, j k} = t _ {d, j k} + \Delta t _ {b, j k} \quad (j = 1, 2... 3) (k = 1, 2, 3) \tag {5.7}
+</annotation></semantics></math></p>
+<p>其中
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mrow><mi>b</mi><mo>,</mo><mi>j</mi><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">t_{b,jk}</annotation></semantics></math>
+表示第 j 架无人机投出的第 k 枚烟幕弹起爆时间,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><msub><mi>t</mi><mrow><mi>b</mi><mo>,</mo><mi>j</mi><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\Delta t_{b,jk}</annotation></semantics></math>
+表示该烟幕弹投放至起爆的时间间隔。起爆点位置即烟幕弹在在起爆时刻的轨迹点，即
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐏</mi><mrow><mi mathvariant="normal">b</mi><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow></msub><mo>=</mo><msub><mi>𝐏</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>t</mi><mrow><mi mathvariant="normal">b</mi><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{P}_{\mathrm{bjk}} = \mathbf{P}_{\mathrm{sjk}}(t_{\mathrm{bjk}})</annotation></semantics></math>
+。所以云团的位置函数为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐏</mi><mrow><mi mathvariant="normal">c</mi><mo>,</mo><mrow><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>P</mi><mrow><mi mathvariant="normal">b</mi><mo>,</mo><mrow><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow><mo>,</mo><mi>x</mi></mrow></msub><mo>,</mo><msub><mi>P</mi><mrow><mi mathvariant="normal">b</mi><mo>,</mo><mrow><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow><mo>,</mo><mi>y</mi></mrow></msub><mo>,</mo><msub><mi>P</mi><mrow><mi mathvariant="normal">b</mi><mo>,</mo><mrow><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow><mo>,</mo><mi>z</mi></mrow></msub><mo>−</mo><msub><mi>v</mi><mtext mathvariant="normal">sink</mtext></msub><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mrow><mi mathvariant="normal">b</mi><mo>,</mo><mrow><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="1.0em"></mspace><mi>t</mi><mo>≥</mo><msub><mi>t</mi><mrow><mi mathvariant="normal">b</mi><mo>,</mo><mrow><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow></mrow></msub><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\mathbf {P} _ {\mathrm{c}, \mathrm{jk}} (t) = \left(P _ {\mathrm{b}, \mathrm{jk}, x}, P _ {\mathrm{b}, \mathrm{jk}, y}, P _ {\mathrm{b}, \mathrm{jk}, z} - v _ {\text {sink}} \cdot \left(t - t _ {\mathrm{b}, \mathrm{jk}}\right)\right) \quad t \geq t _ {\mathrm{b}, \mathrm{jk}} \quad (j = 1, \dots , 5) (k = 1, 2, 3) \tag {5.8}
+</annotation></semantics></math></p>
+<p>根据上面的四个位置函数就可以计算出各个时刻各物体的空间位置从而进行后面的计算。</p>
+<h1 id="有效遮挡判定式">5.2 有效遮挡判定式</h1>
+<p>如果把导弹当作一个散发光线的点光源（发射不可见的电磁波），其产生的光线能够覆盖周围空间，要让圆柱形状的真实目标不被导弹探测，那么导弹产生的光线就不能照射到圆柱上，所以有效遮挡的情境即烟幕弹爆炸生成的云团能够屏蔽所有照向圆柱的光线，使圆柱得到很好的隐匿。可以想象到点光源射向一个球体会在球后生成一个圆锥形的部分区域，只要圆柱能够完全落在这一区域内，那么就能有效地屏蔽导弹的定位。</p>
+<p>根据示意图，下面将对有效遮挡这一条件进行数学说明。给定一条由点
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐏</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\mathbf{P}_1</annotation></semantics></math>
+和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐏</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\mathbf{P}_2</annotation></semantics></math>
+定义的线段，其中
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐏</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\mathbf{P}_1</annotation></semantics></math>
+表示的是导弹在某一时刻的位置，
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐏</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\mathbf{P}_2</annotation></semantics></math>
+表示真实目标圆柱上的任意一点，以及此时的云团球体，其球心为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐂</mi><annotation encoding="application/x-tex">\mathbf{C}</annotation></semantics></math>
+，半径为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+，判断是否有效遮挡需要判断此线段是否与球体相交。</p>
+<p>一个球体
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo stretchy="false" form="prefix">(</mo><mi>C</mi><mo>,</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">S(C,r)</annotation></semantics></math>
+由其球心
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐂</mi><annotation encoding="application/x-tex">\mathbf{C}</annotation></semantics></math>
+和半径
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+唯一定义。空间中任意一点
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+位于球面上当且仅当满足：</p>
+<p><span class="math display">$$
+\left| \mathbf {P} - \mathbf {C} \right| = r \tag {5.9}
+$$</span></p>
+<p>为避免平方根运算，通常使用平方形式：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>𝐏</mi><mo>−</mo><mi>𝐂</mi><mo stretchy="false" form="postfix">)</mo><mo>⋅</mo><mo stretchy="false" form="prefix">(</mo><mi>𝐏</mi><mo>−</mo><mi>𝐂</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+(\mathbf {P} - \mathbf {C}) \cdot (\mathbf {P} - \mathbf {C}) = r ^ {2} \tag {5.10}
+</annotation></semantics></math></p>
+<p>式中·表示向量点积运算。这个方程表达了球面上任意点 P 到球心 C
+的距离平方</p>
+</body>
+</html>

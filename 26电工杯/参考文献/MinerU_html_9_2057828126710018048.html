@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>full</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+table {
+display: table; overflow: auto;
+max-width: 100%;
+border-collapse: collapse;
+page-break-inside: avoid;
+}
+table th {
+text-align: center;
+font-weight: bold;
+}
+table td,table th {
+border: 1px solid #dfe2e5;
+padding: 6px 13px;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #c6cbd1;
+}
+table tr:nth-child(2n) {
+background-color: #f6f8fa;
+}
+</style>
+</head>
+<body>
+<p>利用上面算出的参数表达式，下面根据一元二次方程的判别式进行根的讨论，计算判别式：</p>
+<p><span class="math display">$$
+\Delta = b ^ {2} - 4 a c \tag {5.17}
+$$</span></p>
+<p>根据判别式的值判断相交情况：
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Delta &lt; 0</annotation></semantics></math>
+：无实数解，直线与球体无交点，线段肯定不与球体相交；
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Delta = 0</annotation></semantics></math>
+：一个实数解，直线与球体相切，有一个交点；
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Delta &gt;0</annotation></semantics></math>
+：两个实数解，直线贯穿球体，有两个交点。</p>
+<p>仅考虑直线与球体的交点的个数不足以说明云团有效地遮挡了导弹的光线，例如当导弹的相对位置运行到了云团和真实目标之间时，线段的延长线仍然可能会与云团有交点，但是却不能遮挡导弹，因此还需要考虑交点与线段
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><msub><mi>P</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">P_{1}P_{2}</annotation></semantics></math>
+的位置关系，只有当两个实数解：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>=</mo><mfrac><mrow><mi>−</mi><mi>b</mi><mo>−</mo><msqrt><mi mathvariant="normal">Δ</mi></msqrt></mrow><mrow><mn>2</mn><mi>a</mi></mrow></mfrac><mspace width="1.0em"></mspace><msub><mi>s</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><mi>−</mi><mi>b</mi><mo>+</mo><msqrt><mi mathvariant="normal">Δ</mi></msqrt></mrow><mrow><mn>2</mn><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+s _ {1} = \frac {- b - \sqrt {\Delta}}{2 a} \quad s _ {2} = \frac {- b + \sqrt {\Delta}}{2 a} \tag {5.18}
+</annotation></semantics></math></p>
+<p>满足以下其中一个条件：至少一个交点在线段上，此时
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">s_{1} \in [0,1]</annotation></semantics></math>
+或
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mn>2</mn></msub><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">s_{2} \in [0,1]</annotation></semantics></math>
+，则线段与球体表面相交。这对应于导弹视线从烟幕云团中穿过的情形；线段完全在球体内部，此时
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s_{1} &lt; 0</annotation></semantics></math>
+且
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mn>2</mn></msub><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">s_{2} &gt; 1</annotation></semantics></math>
+，则整个线段都在球体内。这对应于导弹已经完全进入烟幕内部，视线被完全遮蔽的情形。才能说明该点被有效遮挡。而要使整个圆柱被有效遮挡，则圆柱上的任意一点
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>2</mn></msub><annotation encoding="application/x-tex">P_{2}</annotation></semantics></math>
+都应该满足该条件，所以有效遮挡判别式用数学公式表达为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∀</mo><msub><mi>P</mi><mn>2</mn></msub><mo>∈</mo><mi mathvariant="normal">Ω</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo>∣</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>−</mo><mn>2</mn><mn>0</mn><mn>0</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>≤</mo><msup><mn>7</mn><mn>2</mn></msup><mo>,</mo><mspace width="1.0em"></mspace><mn>0</mn><mo>≤</mo><mi>z</mi><mo>≤</mo><mn>1</mn><mn>0</mn><mo stretchy="false" form="postfix">}</mo><mo>,</mo><mspace width="1.0em"></mspace><mover><mrow><msub><mi>P</mi><mn>1</mn></msub><msub><mi>P</mi><mn>2</mn></msub></mrow><mo accent="true">¯</mo></mover><mo>∩</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>P</mi><mi>c</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>≠</mo><mi>⌀</mi></mrow><annotation encoding="application/x-tex">
+\forall P _ {2} \in \Omega = \{(x, y, z) \in \mathbb {R} ^ {3} \mid x ^ {2} + (y - 2 0 0) ^ {2} \leq 7 ^ {2}, \quad 0 \leq z \leq 1 0 \}, \quad \overline {{{P _ {1} P _ {2}}}} \cap C (P _ {c}) \neq \varnothing \tag {5.19}
+</annotation></semantics></math></p>
+<p>其中：
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo>∣</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>−</mo><mn>200</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>≤</mo><msup><mn>7</mn><mn>2</mn></msup><mo>,</mo><mspace width="1.0em"></mspace><mn>0</mn><mo>≤</mo><mi>z</mi><mo>≤</mo><mn>10</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\Omega = \{(x,y,z)\in \mathbb{R}^3\mid x^2 +(y - 200)^2\leq 7^2,\quad 0\leq z\leq 10\}</annotation></semantics></math>
+表示圆柱的整个表面。
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mrow><msub><mi>P</mi><mn>1</mn></msub><msub><mi>P</mi><mn>2</mn></msub></mrow><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline{P_1P_2}</annotation></semantics></math>
+表示线段，
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>P</mi><mi>c</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">C(P_{c})</annotation></semantics></math>
+表示以
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+为球心，半径为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mi mathvariant="normal">m</mi></mrow><annotation encoding="application/x-tex">10\mathrm{m}</annotation></semantics></math>
+的球体。</p>
+<h1 id="有效遮蔽时间区间说明">5.2.1 有效遮蔽时间区间说明</h1>
+<p>由于导弹和云团的运动速度是恒定的，所以遮蔽情况不会发生突变，只会在一段时间内有效遮蔽，一段时间内没有有效遮蔽。记进入有效遮挡的时刻为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>t</mi><mrow><mi>i</mi><mi>n</mi></mrow><mi>k</mi></msubsup><annotation encoding="application/x-tex">t_{in}^{k}</annotation></semantics></math>
+，离开有效遮挡的时间为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>t</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow><mi>k</mi></msubsup><annotation encoding="application/x-tex">t_{out}^{k}</annotation></semantics></math>
+，假设存在 n
+个有效遮挡的连续区间那么这些有效区间都应该满足有效遮挡的判定式：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∀</mo><mi>t</mi><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><msubsup><mi>t</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> in </mtext><mspace width="0.333em"></mspace></mrow><mi>k</mi></msubsup><mo>,</mo><msubsup><mi>t</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> out </mtext><mspace width="0.333em"></mspace></mrow><mi>k</mi></msubsup><mo stretchy="false" form="postfix">]</mo><mo>,</mo><mo>∀</mo><mi>P</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi><mo>,</mo><mover><mrow><msub><mi>P</mi><mn>1</mn></msub><msub><mi>P</mi><mn>2</mn></msub></mrow><mo accent="true">¯</mo></mover><mo>∩</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>P</mi><mi>c</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>≠</mo><mi>⌀</mi></mrow><annotation encoding="application/x-tex">
+\forall t \in [ t _ {\text { in }} ^ {k}, t _ {\text { out }} ^ {k} ], \forall P \in \Omega , \overline {{P _ {1} P _ {2}}} \cap C (P _ {c} (t)) \neq \varnothing
+</annotation></semantics></math></p>
+<p>同时，满足有效遮挡的时间段应该包含于烟幕弹起爆和烟幕弹浓度降低这两个关键时间点，即求解模型中的时间
+t 应该满足：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi mathvariant="normal">b</mi></msub><mo>≤</mo><mi>t</mi><mo>≤</mo><msub><mi>t</mi><mi mathvariant="normal">b</mi></msub><mo>+</mo><mn>2</mn><mn>0</mn></mrow><annotation encoding="application/x-tex">
+t _ {\mathrm{b}} \leq t \leq t _ {\mathrm{b}} + 2 0 \tag {5.20}
+</annotation></semantics></math></p>
+<p>再进一步推导可以把上述公式变为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>∈</mo><munderover><mo>⋃</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mo stretchy="false" form="prefix">[</mo><msubsup><mi>t</mi><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi></mrow><mi>k</mi></msubsup><mo>,</mo><msubsup><mi>t</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">t</mi></mrow><mi>k</mi></msubsup><mo stretchy="false" form="postfix">]</mo><mo>⊆</mo><mo stretchy="false" form="prefix">[</mo><msub><mi>t</mi><mi mathvariant="normal">b</mi></msub><mo>,</mo><msub><mi>t</mi><mi mathvariant="normal">b</mi></msub><mo>+</mo><mn>2</mn><mn>0</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">
+t \in \bigcup_ {k = 1} ^ {n} [ t _ {\mathrm{in}} ^ {k}, t _ {\mathrm{out}} ^ {k} ] \subseteq [ t _ {\mathrm{b}}, t _ {\mathrm{b}} + 2 0 ]
+</annotation></semantics></math></p>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>full</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+table {
+display: table; overflow: auto;
+max-width: 100%;
+border-collapse: collapse;
+page-break-inside: avoid;
+}
+table th {
+text-align: center;
+font-weight: bold;
+}
+table td,table th {
+border: 1px solid #dfe2e5;
+padding: 6px 13px;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #c6cbd1;
+}
+table tr:nth-child(2n) {
+background-color: #f6f8fa;
+}
+</style>
+</head>
+<body>
+<h1 id="问题五的分析">2.5 问题五的分析</h1>
+<p>问题五是最困难的多机多弹多目标的情况，需要确定哪架无人机去拦截哪枚导弹，每个无人机需要投多少枚烟幕弹以及总体投放的策略，直接考虑所有的决策变量，则变量的维度太大，很难直接快速的计算，因此需要把问题简化，拆分成多个步骤，即要先确定资源分配的策略，再决定烟幕弹投放的策略，以提高计算效率。</p>
+<h1 id="三模型假设">三、模型假设</h1>
+<ol type="1">
+<li><p>将导弹、无人机、烟幕弹、烟幕云团中心以及假目标均视为质点进行运动学分析。</p></li>
+<li><p>不考虑空气阻力、风速等环境因素对无人机和导弹飞行的影响。</p></li>
+<li><p>烟幕云团形成后，球心在垂直方向以
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>m</mi><mo>⋅</mo><msup><mi>s</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">3m \cdot s^{-1}</annotation></semantics></math>
+的速度匀速下沉。</p></li>
+<li><p>无人机受领任务和调整飞行姿态的时间忽略不计。</p></li>
+<li><p>烟幕弹起爆瞬时形成一个半径为 10
+米的理想球状云团，且在有效时间内（20
+秒）其半径和遮蔽能力保持不变。</p></li>
+</ol>
+<h1 id="四符号说明">四、符号说明</h1>
+<table>
+<tbody>
+<tr>
+<td>符号</td>
+<td>含义</td>
+<td>单位</td>
+</tr>
+<tr>
+<td>{P}_{m,i}\left( t\right)</td>
+<td>导弹 i 在时刻 t 的位置向量</td>
+<td>m</td>
+</tr>
+<tr>
+<td>{v}_{m,i}</td>
+<td>导弹 i 的速度向量</td>
+<td>m/s</td>
+</tr>
+<tr>
+<td>{v}_{m}</td>
+<td>导弹速度大小</td>
+<td>m/s</td>
+</tr>
+<tr>
+<td>{P}_{fY,j}\left( t\right)</td>
+<td>无人机 j 在时刻 t 的位置向量</td>
+<td>m</td>
+</tr>
+<tr>
+<td>{v}_{fY,j}</td>
+<td>无人机 j 的速度向量</td>
+<td>m/s</td>
+</tr>
+<tr>
+<td>{\theta }_{j}</td>
+<td>无人机 j 的航向角 (与 x 轴夹角)</td>
+<td>rad</td>
+</tr>
+<tr>
+<td>{P}_{s,{jk}}\left( t\right)</td>
+<td>无人机 j 投放的第 k 枚烟幕弹的位置</td>
+<td>m</td>
+</tr>
+<tr>
+<td>{t}_{d,{jk}}</td>
+<td>烟幕弹投放时间</td>
+<td>S</td>
+</tr>
+<tr>
+<td>{t}_{b,{jk}}</td>
+<td>烟幕弹起爆时间</td>
+<td>S</td>
+</tr>
+<tr>
+<td>{P}_{e,{jk}}\left( t\right)</td>
+<td>烟幕弹爆炸后云团中心的位置</td>
+<td>m</td>
+</tr>
+<tr>
+<td>{v}_{\text{sink }}</td>
+<td>云团下沉速度</td>
+<td>m/s</td>
+</tr>
+<tr>
+<td>g</td>
+<td>重力加速度向量</td>
+<td>\mathrm{m}/{\mathrm{s}}^{2}</td>
+</tr>
+<tr>
+<td>Ω</td>
+<td>真实目标圆柱体表面区域</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Bool(t)</td>
+<td>遮蔽状态布尔函数 (1 为遮蔽,0 为未遮蔽)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>{t}_{in}</td>
+<td>有效遮蔽开始时刻</td>
+<td>S</td>
+</tr>
+<tr>
+<td>{t}_{out}</td>
+<td>有效遮蔽结束时刻</td>
+<td>S</td>
+</tr>
+</tbody>
+</table>
+<p>续下页</p>
+</body>
+</html>

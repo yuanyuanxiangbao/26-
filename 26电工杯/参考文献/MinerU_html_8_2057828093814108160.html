@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>full</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+table {
+display: table; overflow: auto;
+max-width: 100%;
+border-collapse: collapse;
+page-break-inside: avoid;
+}
+table th {
+text-align: center;
+font-weight: bold;
+}
+table td,table th {
+border: 1px solid #dfe2e5;
+padding: 6px 13px;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #c6cbd1;
+}
+table tr:nth-child(2n) {
+background-color: #f6f8fa;
+}
+</style>
+</head>
+<body>
+<p><img role="img" aria-label="image" src="data:image/jpeg;base64,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" alt="image" /></p>
+<p>图 4: 有效遮挡示意图</p>
+<p>等于半径平方的几何关系。</p>
+<p>同时线段
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><msub><mi>P</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">P_{1}P_{2}</annotation></semantics></math>
+上的任意点
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐏</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{P}(t)</annotation></semantics></math>
+可以表示为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐏</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>𝐏</mi><mn>1</mn></msub><mo>+</mo><mi>s</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>𝐏</mi><mn>2</mn></msub><mo>−</mo><msub><mi>𝐏</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>s</mi><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">
+\mathbf {P} (t) = \mathbf {P} _ {1} + s (\mathbf {P} _ {2} - \mathbf {P} _ {1}), \quad s \in [ 0, 1 ] \tag {5.11}
+</annotation></semantics></math></p>
+<p>其中：
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s = 0</annotation></semantics></math>
+时，
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐏</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>𝐏</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\mathbf{P}(0) = \mathbf{P}_1</annotation></semantics></math>
+（线段起点）；
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">s = 1</annotation></semantics></math>
+时，
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐏</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>𝐏</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\mathbf{P}(1) = \mathbf{P}_2</annotation></semantics></math>
+（线段终点）；
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>s</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 &lt; s &lt; 1</annotation></semantics></math>
+时，
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐏</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{P}(t)</annotation></semantics></math>
+在线段内部；当
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s &lt; 0</annotation></semantics></math>
+或
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">s &gt; 1</annotation></semantics></math>
+时，
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(t)</annotation></semantics></math>
+位于线段的延长线上。</p>
+<p>令
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐝</mi><mo>=</mo><msub><mi>𝐏</mi><mn>2</mn></msub><mo>−</mo><msub><mi>𝐏</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\mathbf{d} = \mathbf{P}_2 - \mathbf{P}_1</annotation></semantics></math>
+，将线段参数方程（5.11）代入球面方程(5.10)，得到：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>𝐏</mi><mn>1</mn></msub><mo>+</mo><mi>s</mi><mi>𝐝</mi><mo>−</mo><mi>𝐂</mi><mo stretchy="false" form="postfix">)</mo><mo>⋅</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>𝐏</mi><mn>1</mn></msub><mo>+</mo><mi>s</mi><mi>𝐝</mi><mo>−</mo><mi>𝐂</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+(\mathbf {P} _ {1} + s \mathbf {d} - \mathbf {C}) \cdot (\mathbf {P} _ {1} + s \mathbf {d} - \mathbf {C}) = r ^ {2} \tag {5.12}
+</annotation></semantics></math></p>
+<p>引入向量
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>𝐎</mi><mi>𝐂</mi></mrow><mo>=</mo><msub><mi>𝐏</mi><mn>1</mn></msub><mo>−</mo><mi>𝐂</mi></mrow><annotation encoding="application/x-tex">\mathbf{OC} = \mathbf{P}_1 - \mathbf{C}</annotation></semantics></math>
+，表示从球心指向线段起点的向量，则方程简化为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi>𝐎</mi><mi>𝐂</mi></mrow><mo>+</mo><mi>s</mi><mi>𝐝</mi><mo stretchy="false" form="postfix">)</mo><mo>⋅</mo><mo stretchy="false" form="prefix">(</mo><mrow><mi>𝐎</mi><mi>𝐂</mi></mrow><mo>+</mo><mi>s</mi><mi>𝐝</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+(\mathbf {O C} + s \mathbf {d}) \cdot (\mathbf {O C} + s \mathbf {d}) = r ^ {2} \tag {5.13}
+</annotation></semantics></math></p>
+<p>将上面的公式展开得：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>s</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>𝐝</mi><mo>⋅</mo><mi>𝐝</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mn>2</mn><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>𝐝</mi><mo>⋅</mo><mrow><mi>𝐎</mi><mi>𝐂</mi></mrow><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mrow><mi>𝐎</mi><mi>𝐂</mi></mrow><mo>⋅</mo><mrow><mi>𝐎</mi><mi>𝐂</mi></mrow><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msup><mi>r</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+s ^ {2} (\mathbf {d} \cdot \mathbf {d}) + 2 s (\mathbf {d} \cdot \mathbf {O C}) + (\mathbf {O C} \cdot \mathbf {O C}) - r ^ {2} = 0 \tag {5.14}
+</annotation></semantics></math></p>
+<p>这是一个关于参数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+的一元二次方程，标准形式为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><msup><mi>s</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>s</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">
+a s ^ {2} + b s + c = 0 \tag {5.15}
+</annotation></semantics></math></p>
+<p>其中系数为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>𝐝</mi><mo>⋅</mo><mi>𝐝</mi><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi>𝐝</mi><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mspace width="1.0em"></mspace><mi>b</mi><mo>=</mo><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mrow><mi>𝐎</mi><mi>𝐂</mi></mrow><mo>⋅</mo><mi>𝐝</mi><mo stretchy="false" form="postfix">)</mo><mspace width="1.0em"></mspace><mi>c</mi><mo>=</mo><mrow><mi>𝐎</mi><mi>𝐂</mi></mrow><mo>⋅</mo><mrow><mi>𝐎</mi><mi>𝐂</mi></mrow><mo>−</mo><msup><mi>r</mi><mn>2</mn></msup><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mrow><mi>𝐎</mi><mi>𝐂</mi></mrow><msup><mo stretchy="false" form="prefix">|</mo><mn>2</mn></msup><mo>−</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">
+a = \mathbf {d} \cdot \mathbf {d} = | \mathbf {d} | ^ {2} \quad b = 2 (\mathbf {O C} \cdot \mathbf {d}) \quad c = \mathbf {O C} \cdot \mathbf {O C} - r ^ {2} = | \mathbf {O C} | ^ {2} - r ^ {2} \tag {5.16}
+</annotation></semantics></math></p>
+<p>系数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+恒为正（除非
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐝</mi><mo>=</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\mathbf{d} = \mathbf{0}</annotation></semantics></math>
+，即线段退化为点），
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+的符号取决于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_{1}</annotation></semantics></math>
+是否在球体内。</p>
+</body>
+</html>

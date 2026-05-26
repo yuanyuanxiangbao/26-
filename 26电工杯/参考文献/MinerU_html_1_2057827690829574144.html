@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>full</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+table {
+display: table; overflow: auto;
+max-width: 100%;
+border-collapse: collapse;
+page-break-inside: avoid;
+}
+table th {
+text-align: center;
+font-weight: bold;
+}
+table td,table th {
+border: 1px solid #dfe2e5;
+padding: 6px 13px;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #c6cbd1;
+}
+table tr:nth-child(2n) {
+background-color: #f6f8fa;
+}
+</style>
+</head>
+<body>
+<h1 id="多情形下无人机烟幕遮蔽策略的建模与优化研究">多情形下无人机烟幕遮蔽策略的建模与优化研究</h1>
+<h1 id="摘要">摘要</h1>
+<p>烟幕干扰弹能给导弹打击的目标提供有效遮蔽，减少损失，由于低成本、效用高的特点，其在军事上得到了广泛的应用。本文针对无人机投放烟幕弹最优策略的研究，首先给出了导弹、烟幕弹等物体的位置函数，同时对有效遮挡的判别式进行了详细的说明。另外，本文引入了布尔函数来判断遮挡是否有效，使得表达更加简洁易懂。</p>
+<p>针对问题一：本问已经给定导弹、无人机与烟幕弹的初始参数，代入模型准备时求得的运动学模型结合遮挡判定模型，对布尔函数在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0,\infty ]</annotation></semantics></math>
+进行积分即可求得有效遮挡时长。在求解前，本文首先证明了有效遮蔽时间区间是一段连续的区间及只需判断圆柱体上下两个底面圆周是否被完全遮蔽，即可判定整个圆柱体是否被完全遮蔽这两个结论，大大增加了求解效率。之后通过二分查找法进行求解求得烟幕弹对M1的有效遮蔽时长为1.391643s。此外，本文通过在圆周上取不同数量离散点进行敏感度分析，发现当取300个点时，能够兼顾求解的准确性和效率。</p>
+<p>针对问题二：在无人机以及烟幕弹参数不知道的情况下，本问基于问题一的分析，建立了以无人机航向、速度，烟幕弹投放、爆炸时间四个参数为决策变量，最大化有效遮挡时间的单机单弹情况下的优化模型。通过多起点变步长搜索算法求出了FY1干扰M1的最优投放策略，即FY1以
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1363663</mn><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">s</mi></mrow></mrow><annotation encoding="application/x-tex">1363663\mathrm{m / s}</annotation></semantics></math>
+向
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>5.168</mn><mo>∘</mo></msup><annotation encoding="application/x-tex">5.168^{\circ}</annotation></semantics></math>
+方向匀速飞行，在受领任务0.8977s后投放一枚烟幕弹，间隔0.0497s后起爆，此方案下有效遮蔽时长为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4.5873</mn><mi>s</mi></mrow><annotation encoding="application/x-tex">4.5873s</annotation></semantics></math>
+。此外，本问用粒子群算法重新求解模型进行验证，发现两个算法的相对误差仅为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.01</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">0.01\%</annotation></semantics></math>
+，说明我们的算法能有效求解本问的优化模型。</p>
+<p>针对问题三：本问拓展至单无人机多干扰弹情形，建立了优化模型。用差分进化算法对三枚烟幕弹的投放与起爆点进行了优化，求解出最大有效遮挡时间是6.93586s，该策略下的其余数据见附件result1.xlsx。</p>
+<p>针对问题四：不同于单无人机多干扰弹，多无人机单干扰弹不需要考虑投弹之间的时间间隔，但需要考虑三枚导弹在时空上的协同，同样建立了以最大化有效遮挡时长为目标的优化模型，计算时通过分析导弹和目标视线的几何关系，提出了基于预测拦截点的协同优化算法，将12维决策空间降维处理，显著提升求解效率，并通过局部网格搜索进行精细优化。最终求出最大有效遮挡时间为11.125936s，其余数据见附件result2.xlsx。最后，利用差分进化算法进行验证求解得到总最大有效遮蔽时间是11.645260s，两者差距不大。</p>
+<p>针对问题五：首先建立了多无人机多干扰弹多来袭导弹情形下的优化模型，但决策变量维度太大，不能直接求解。观察初始状态下无人机和导弹的位置分布，产生了进行分层次优化的想法，即先分配任务再优化参数。求解时，先对任务分配进行了说明，之后把问题分成了三个子问题：分别对导弹
+M1,M2,M3
+的最长有效遮蔽时间进行求解，然后再对这三个子问题得到的三个有效遮蔽时间区间取交集，最终求得的总最大有效遮蔽时间为
+21.0770s。其他的数据见附件 result3.xlsx。</p>
+<p>关键词：烟幕遮蔽 二分查找法 多起点变步长搜索 差分进化算法
+分层次优化</p>
+</body>
+</html>

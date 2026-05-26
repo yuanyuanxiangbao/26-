@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>full</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+table {
+display: table; overflow: auto;
+max-width: 100%;
+border-collapse: collapse;
+page-break-inside: avoid;
+}
+table th {
+text-align: center;
+font-weight: bold;
+}
+table td,table th {
+border: 1px solid #dfe2e5;
+padding: 6px 13px;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #c6cbd1;
+}
+table tr:nth-child(2n) {
+background-color: #f6f8fa;
+}
+</style>
+</head>
+<body>
+<p>有效遮挡时长及所有有效遮挡时间点的集合，即为这个集合的总长度：</p>
+<p><span class="math display">$$
+T = \int_ {0} ^ {\infty} B o o l (t) d t \tag {5.27}
+$$</span></p>
+<p>时间
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+的积分区间为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0, \infty]</annotation></semantics></math>
+，这是因为在有效遮挡时间段布尔值才为1，积分即为这一段的时长，而在非有效遮挡的时段，积分值为0，不会对结果造成影响，这样考虑可以避免上文关于存在多段有效时间的考虑，使模型的约束减少，计算效率更优。</p>
+<h1 id="六问题一模型建立及求解">六、问题一模型建立及求解</h1>
+<p>问题一针对具体的一个场景，在所有参数都已经给定的情况下（烟幕弹投放时间为1.5s，起爆时间为5.1s），需要求解单枚烟幕弹对单枚导弹的有效遮挡时长。需要利用各物体的位置函数以及有效遮挡判定式来确定发生有效遮挡的时间段。</p>
+<h1 id="有效时长计算模型">6.1 有效时长计算模型</h1>
+<h1 id="导弹m1与烟幕云团球心的轨迹">6.1.1
+导弹M1与烟幕云团球心的轨迹</h1>
+<p>根据模型准备部分的分析，可以得出无人机FY1和导弹M1在给定的参数下的位置函数，以及烟幕弹和云团的运动轨迹：</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>2</mn></msub><annotation encoding="application/x-tex">P_{2}</annotation></semantics></math>
+是圆柱表面上的任意一点，可以利用数学表达式
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∀</mo><msub><mi>P</mi><mn>2</mn></msub><mo>∈</mo><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\forall P_2\in \Omega</annotation></semantics></math>
+表出，对于导弹在某一时刻的位置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mn>1</mn></msub><annotation encoding="application/x-tex">P_{1}</annotation></semantics></math>
+，这里指的是导弹
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mn>1</mn></msub><annotation encoding="application/x-tex">M_{1}</annotation></semantics></math>
+的位置，由导弹的位置函数可以得出：</p>
+<p><span class="math display">$$
+\mathbf {P} _ {1} = \mathbf {P} _ {m, 1} (t) = \mathbf {P} _ {m, 1} (0)
++ \mathbf {v} _ {m, 1} \cdot t \tag {6.1}
+$$</span></p>
+<p>云团的球心可以通过云团的位置函数求出：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>𝐏</mi><mrow><mi mathvariant="normal">c</mi><mo>,</mo><mn>1</mn><mn>1</mn></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>F</mi><mrow><mi mathvariant="normal">b</mi><mo>,</mo><mn>1</mn><mn>1</mn><mo>,</mo><mi>x</mi></mrow></msub><mo>,</mo><msub><mi>F</mi><mrow><mi mathvariant="normal">b</mi><mo>,</mo><mn>1</mn><mn>1</mn><mo>,</mo><mi>y</mi></mrow></msub><mo>,</mo><msub><mi>F</mi><mrow><mi mathvariant="normal">b</mi><mo>,</mo><mn>1</mn><mn>1</mn><mo>,</mo><mi>z</mi></mrow></msub><mo>−</mo><msub><mi>v</mi><mtext mathvariant="normal">sink</mtext></msub><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mrow><mi mathvariant="normal">b</mi><mo>,</mo><mn>1</mn><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="1.0em"></mspace><mi>t</mi><mo>≥</mo><msub><mi>t</mi><mrow><mi mathvariant="normal">b</mi><mo>,</mo><mn>1</mn><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>𝐏</mi><mrow><mi mathvariant="normal">s</mi><mo>,</mo><mn>1</mn><mn>1</mn></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>𝐏</mi><mrow><mi>f</mi><mi>y</mi><mn>1</mn></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>t</mi><mrow><mi mathvariant="normal">d</mi><mn>1</mn><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>𝐯</mi><mrow><mi>f</mi><mi>y</mi><mn>1</mn></mrow></msub><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mrow><mi mathvariant="normal">d</mi><mo>,</mo><mn>1</mn><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>𝐠</mi><mo>⋅</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mrow><mi mathvariant="normal">d</mi><mo>,</mo><mn>1</mn><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mspace width="1.0em"></mspace><mi>t</mi><mo>≥</mo><msub><mi>t</mi><mrow><mi mathvariant="normal">d</mi><mo>,</mo><mn>1</mn><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>𝐯</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mn>1</mn></mrow></msub><mi mathvariant="normal">cos</mi><msub><mi>θ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mn>1</mn></mrow></msub><mi mathvariant="normal">sin</mi><msub><mi>θ</mi><mn>1</mn></msub><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>𝐏</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mn>1</mn></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>𝐏</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mn>1</mn></mrow></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>𝐯</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mn>1</mn></mrow></msub><mo>⋅</mo><mi>t</mi></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">
+\left\{ \begin{array}{l} \mathbf {P} _ {\mathrm{c}, 1 1} (t) = \left(F _ {\mathrm{b}, 1 1, x}, F _ {\mathrm{b}, 1 1, y}, F _ {\mathrm{b}, 1 1, z} - v _ {\text {sink}} \cdot \left(t - t _ {\mathrm{b}, 1 1}\right)\right) \quad t \geq t _ {\mathrm{b}, 1 1} \\ \mathbf {P} _ {\mathrm{s}, 1 1} (t) = \mathbf {P} _ {f y 1} \left(t _ {\mathrm{d} 1 1}\right) + \mathbf {v} _ {f y 1} \cdot \left(t - t _ {\mathrm{d}, 1 1}\right) + \frac {1}{2} \mathbf {g} \cdot \left(t - t _ {\mathrm{d}, 1 1}\right) ^ {2} \quad t \geq t _ {\mathrm{d}, 1 1} \\ \mathbf {v} _ {f y, 1} = \left(v _ {f y, 1} \cos \theta_ {1}, v _ {f y, 1} \sin \theta_ {1}, 0\right) \\ \mathbf {P} _ {f y, 1} (t) = \mathbf {P} _ {f y, 1} (0) + \mathbf {v} _ {f y, 1} \cdot t \end{array} \right. \tag {6.2}
+</annotation></semantics></math></p>
+<h1 id="判定式说明">6.1.2 判定式说明</h1>
+<p>该问题考虑的是单枚烟幕弹与单枚导弹的情况，所以只需要考虑单个云团的遮挡，而不存在云团间的耦合，所以满足有效遮挡的判别式为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Bool</mi><mo>⁡</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> if </mtext><mspace width="0.333em"></mspace></mrow><mo>∀</mo><msub><mi>P</mi><mn>2</mn></msub><mo>∈</mo><mi mathvariant="normal">Ω</mi><mo>,</mo><mspace width="1.0em"></mspace><mover><mrow><msub><mi>P</mi><mrow><mi>m</mi><mn>1</mn></mrow></msub><msub><mi>P</mi><mn>2</mn></msub></mrow><mo accent="true">¯</mo></mover><mo>∩</mo><mi>C</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>P</mi><mrow><mi>c</mi><mo>,</mo><mn>1</mn><mn>1</mn></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>≠</mo><mi>⌀</mi></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> otherwise </mtext><mspace width="0.333em"></mspace></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+\operatorname{Bool} (t) = \left\{ \begin{array}{l l} 1, &amp; \text { if } \forall P _ {2} \in \Omega , \quad \overline {{P _ {m 1} P _ {2}}} \cap C (P _ {c, 1 1} (t)) \neq \varnothing \\ 0, &amp; \text { otherwise } \end{array} \right. \tag {6.3}
+</annotation></semantics></math></p>
+</body>
+</html>

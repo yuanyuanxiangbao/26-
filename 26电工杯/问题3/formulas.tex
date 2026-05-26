@@ -1,0 +1,164 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[UTF8]{ctex}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{booktabs}
+
+\title{问题3 服务定价与政府补贴优化\quad 公式推导}
+\date{}
+
+\begin{document}
+\maketitle
+
+\subsection{问题重述}
+在问题2确定的最优选址与规模方案基础上，政府决定除紧急救助外的其他服务按有效服务人次补贴2元/人次，单个服务站每日补贴有上限（小型1000元、中型1800元、大型2600元），紧急救助免费不计补贴。养老机构利润率不超过8\%。要求：
+\begin{enumerate}
+    \item 以最大化老人满意度为目标建立优化模型，确定各项服务最优定价。
+    \item 求解最优定价，计算各站年度利润、利润率及小区满意度。
+    \item 分析定价与补贴对三类老人服务可及性的影响。
+\end{enumerate}
+
+\subsection{模型准备：帕累托前沿与方案选择}
+问题2为双目标优化（最大化覆盖率与平均满意度），以权重$\alpha$加权求和：
+\begin{equation}
+\text{score}(x;\alpha) = \alpha\cdot f_1(x) + (1-\alpha)\cdot f_2(x)
+\label{eq:pareto}
+\end{equation}
+不同$\alpha$得到帕累托前沿上的不同折中方案。采用膝点法自动选$\alpha$：将前沿上非支配方案按$\text{cov}$排序，对第$i$点计算
+\begin{equation}
+\kappa_i^L = \frac{\text{sat}_i - \text{sat}_{i-1}}{\text{cov}_i - \text{cov}_{i-1} + \varepsilon},\;
+\kappa_i^R = \frac{\text{sat}_{i+1} - \text{sat}_i}{\text{cov}_{i+1} - \text{cov}_i + \varepsilon},\;
+\text{knee}_i = \frac{|\kappa_i^R - \kappa_i^L|}{1 + |\kappa_i^L| + |\kappa_i^R|}
+\label{eq:knee}
+\end{equation}
+则$\alpha^* = \arg\max \text{knee}_i$，对应方案作为问题3的输入。
+
+\subsection{符号说明}
+\begin{table}[htbp]
+\centering
+\caption{符号说明}
+\begin{tabular}{@{}lll@{}}
+\toprule
+符号 & 含义 & 单位 \\
+\midrule
+$i$ & 小区编号 & $i=A,\ldots,J$ \\
+$j$ & 服务站编号 & $j=1,2,\ldots$ \\
+$\text{svc}$ & 服务项目 & 助餐、日间照料等六项 \\
+$\text{typ}$ & 老人类型 & 自理、半失能、失能 \\
+$n_i^{\text{typ}}$ & 小区$i$第5年末类型typ老人人数 & 人 \\
+$r_{\text{svc}}^{\text{typ}}$ & 类型typ老人对服务svc的人均月需求 & 次/人/月 \\
+$I_i$ & 小区$i$人均月收入 & 元 \\
+$k^{\text{typ}}$ & 类型typ老人消费比例上限 & 无量纲 \\
+$p_{\text{svc}}^0$ & 服务svc基准价（直接支出） & 元/次 \\
+$p_{j,\text{svc}}$ & 服务站$j$对服务svc的定价 & 元/次 \\
+$d_{ij}$ & 小区$i$到服务站$j$的距离 & m \\
+$S1_{ij},S2_j,S3_{ij}$ & 距离、响应、价格满意度 & 无量纲 \\
+$Q_j^{\text{cap}}$ & 服务站$j$日容量上限 & 人次/日 \\
+$Q_{i,\text{svc}}$ & 小区$i$对服务svc的实际月需求 & 次/月 \\
+$H_j^{\text{cap}}$ & 服务站$j$日补贴上限 & 元 \\
+$C_j^{\text{op}}, C_j^{\text{build}}$ & 日运营管理成本、建设成本 & 元/日、万元 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{满意度模型}
+综合满意度$S$由距离、响应、价格三部分加权：
+\begin{equation}
+S_{ij} = 0.2\cdot S1_{ij} + 0.3\cdot S2_j + 0.5\cdot S3_{ij}
+\label{eq:S}
+\end{equation}
+
+距离满意度$S1$按附件5规则：
+\begin{equation}
+S1(d)=
+\begin{cases}
+1.00,\;d\leq300 & 0.90,\;300<d\leq500 \\
+0.75,\;500<d\leq650 & 0.60,\;650<d\leq1000 \\
+0,\;d>1000 &
+\end{cases}
+\label{eq:S1}
+\end{equation}
+
+服务响应满意度$S2$取决于利用率$U_j$：
+\begin{equation}
+U_j = \frac{1}{Q_j^{\text{cap}}}\sum_{i\in\mathcal{C}_j}\frac{\sum_{\text{svc}}Q_{i,\text{svc}}}{30}\cdot S_{ij}
+\label{eq:U}
+\end{equation}
+\begin{equation}
+S2(U)=
+\begin{cases}
+1.00,\;U\leq0.60 & 0.93,\;0.60<U\leq0.75 \\
+0.85,\;0.75<U\leq0.85 & 0.72,\;0.85<U\leq0.95 \\
+0.60,\;U>0.95 &
+\end{cases}
+\label{eq:S2}
+\end{equation}
+$S_{ij}$与$S2_j$循环依赖，采用阻尼迭代求解：
+\begin{equation}
+S2^{(t+1)} = 0.5\cdot S2^{(t)} + 0.5\cdot S2(U^{(t)}),\quad |S2^{(t+1)}-S2^{(t)}|<10^{-4}\text{时收敛}
+\label{eq:S2_iter}
+\end{equation}
+
+价格满意度$S3$关于价格乘子$\lambda=p_{j,\text{svc}}/p_{\text{svc}}^0$：
+\begin{equation}
+S3(\lambda)=
+\begin{cases}
+1.00,\;\lambda\leq1.00 & 0.90,\;1.00<\lambda\leq1.10 \\
+0.75,\;1.10<\lambda\leq1.20 & 0.60,\;\lambda>1.20
+\end{cases}
+\label{eq:S3}
+\end{equation}
+小区总体$S3_{ij}$按需求人次加权：
+\begin{equation}
+S3_{ij} = \frac{\sum_{\text{svc}}Q_{i,\text{svc}}\cdot S3(\lambda_{j,\text{svc}})}{\sum_{\text{svc}}Q_{i,\text{svc}}}
+\label{eq:S3w}
+\end{equation}
+
+\subsection{需求计算模型}
+给定定价$p_{j,\text{svc}}$后，小区$i$类型typ老人的：
+\begin{align}
+\text{消费上限:}\quad & L_i^{\text{typ}} = I_i\cdot k^{\text{typ}} \\
+\text{人均理论消费:}\quad & w_i^{\text{typ}} = \sum_{\text{svc}} r_{\text{svc}}^{\text{typ}}\cdot p_{j,\text{svc}} \\
+\text{缩减系数:}\quad & f_i^{\text{typ}} = \min\left(1,\; L_i^{\text{typ}}/w_i^{\text{typ}}\right) \\
+\text{实际月需求:}\quad & a_{i,\text{svc}}^{\text{typ}} = \text{round}\left(n_i^{\text{typ}}\cdot r_{\text{svc}}^{\text{typ}}\cdot f_i^{\text{typ}}\right) \\
+\text{总需求:}\quad & Q_{i,\text{svc}} = a_{i,\text{svc}}^C + a_{i,\text{svc}}^S + a_{i,\text{svc}}^D
+\label{eq:demand}
+\end{align}
+
+\subsection{利润与补贴模型}
+服务站$j$月有效人次$V_{j,\text{svc}} = \sum_{i\in\mathcal{C}_j} Q_{i,\text{svc}}\cdot S_{ij}$。各项年度指标：
+\begin{align}
+\text{年营收:}\quad & R_j = 12 \sum_{\text{svc}\neq\text{紧急救助}} V_{j,\text{svc}}\cdot p_{j,\text{svc}} \\
+\text{年直接支出:}\quad & C_j^{\text{dir}} = 12 \sum_{\text{svc}} V_{j,\text{svc}}\cdot p_{\text{svc}}^0 \\
+\text{年补贴:}\quad & H_j = \min\left(12\sum_{\text{svc}\neq\text{紧急救助}} V_{j,\text{svc}}\times 2,\; H_j^{\text{cap}}\times 365\right) \\
+\text{年固定成本:}\quad & F_j = C_j^{\text{op}}\times 365 + \frac{C_j^{\text{build}}\times10000}{20} \\
+\text{年利润:}\quad & \Pi_j = R_j - C_j^{\text{dir}} + H_j - F_j \\
+\text{利润率:}\quad & \eta_j = \frac{\Pi_j}{F_j},\quad 0\leq\eta_j\leq0.08
+\label{eq:profit}
+\end{align}
+
+\subsection{定价优化模型}
+对每个服务站$j$独立求解。决策变量为5类非紧急服务的价格乘子：
+\begin{equation}
+\lambda_{j,\text{svc}}\in\Lambda=\{0.90,0.95,1.00,1.05,1.10,1.15,1.20,1.30,1.50\}
+\label{eq:Lambda}
+\end{equation}
+目标为最大化覆盖小区的平均综合满意度：
+\begin{equation}
+\boxed{\max_{\lambda_{j,\text{svc}}}\; \bar{S}_j = \frac{1}{|\mathcal{C}_j|}\sum_{i\in\mathcal{C}_j} S_{ij},\quad \text{s.t.}\; \lambda_{j,\text{svc}}\in\Lambda,\; 0\leq\eta_j\leq0.08}
+\label{eq:opt}
+\end{equation}
+搜索空间$9^5=59049$种组合，逐次计算需求、满意度、利润，取可行解中$\bar{S}_j$最大者。
+
+\subsection{可及性分析}
+对比原营收价$p_{\text{svc}}^{\text{rev}}$与最优价$p_{j,\text{svc}}$下各类老人的经济负担变化：
+\begin{align}
+\text{原价人均月消费:}\quad & w_i^{\text{typ,orig}} = \sum_{\text{svc}} r_{\text{svc}}^{\text{typ}}\cdot p_{\text{svc}}^{\text{rev}} \\
+\text{现价人均月消费:}\quad & w_i^{\text{typ,opt}} = \sum_{\text{svc}} r_{\text{svc}}^{\text{typ}}\cdot p_{j,\text{svc}} \\
+\text{实际月支出:}\quad & \text{oop}_i^{\text{typ}} = \min\left(w_i^{\text{typ}},\; L_i^{\text{typ}}\right) \\
+\text{月节省:}\quad & \Delta\text{oop}_i^{\text{typ}} = \text{oop}_i^{\text{typ,orig}} - \text{oop}_i^{\text{typ,opt}}
+\label{eq:access}
+\end{align}
+地理可及性以$S1$定量评估，信息可及性定性讨论。
+
+\end{document}

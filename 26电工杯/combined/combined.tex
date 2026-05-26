@@ -1,0 +1,616 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[UTF8]{ctex}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+
+\title{嵌入式社区养老服务站建设与优化\quad 公式推导汇总}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{问题1：人口预测与需求计算}
+
+\subsection{问题1.1：未来五年老人数量预测}
+
+\subsubsection{问题重述}
+已知各小区当前60岁以上老人的自理、半失能、失能三类人数，以及年死亡率、年新增率、状态转移概率等参数，要求预测未来五年各小区三类老人的人数变化，并计算第1年总人口增长率和5年复合年均增长率。
+
+\subsubsection{问题分析}
+本问的核心是建立一个人口动态演化模型。老人总人口受两个因素影响：新增人口（按年新增率）和死亡人口（按年死亡率）。同时，三类老人之间存在单向状态转移：自理$\to$半失能$\to$失能。为提高预测精度，采用逐日递推的方式，将年度参数转化为日度参数后进行迭代计算。
+
+\subsubsection{模型假设}
+\begin{enumerate}
+    \item 将老人群体视为封闭系统，人口变化仅由新增和死亡决定，不考虑迁入迁出。
+    \item 每年新增的老人全部归入自理类，新增时不存在半失能或失能状态。
+    \item 年死亡率 $M$ 对所有老人和所有小区均相同，不随年龄、健康状态变化。
+    \item 状态转移是不可逆的单向过程，即自理$\to$半失能$\to$失能，不存在反向恢复。
+    \item 每天的存活事件、转移事件相互独立，可使用乘法模型计算累积效果。
+    \item 因日转移率 $t_1, t_2 \ll 1$，单日转移人数近似为当前人数乘以日转移率（线性近似）。
+    \item 年死亡率 $M$、年新增率 $G$、年转移概率 $p_1, p_2$ 在5年预测期内保持不变。
+\end{enumerate}
+
+\subsubsection{符号说明}
+本文所用符号及其含义如表~\ref{tab:symbols_1.1}~所示。
+
+\begin{table}[htbp]
+\centering
+\caption{问题1.1 符号说明}
+\label{tab:symbols_1.1}
+\begin{tabular}{lll}
+\toprule
+符号 & 含义 & 单位/取值范围 \\
+\midrule
+$C_t$ & 第 $t$ 天自理老人人数 & 人，$C_t \geq 0$ \\
+$S_t$ & 第 $t$ 天半失能老人人数 & 人，$S_t \geq 0$ \\
+$D_t$ & 第 $t$ 天失能老人人数 & 人，$D_t \geq 0$ \\
+$T_t$ & 第 $t$ 天老人总人数，$T_t = C_t + S_t + D_t$ & 人 \\
+$C_0, S_0, D_0$ & 初始时刻（第0天）各小区的三类老人人数 & 人 \\
+$M$ & 年死亡率，题目给定 $M=0.05$ & 无量纲，$0 < M < 1$ \\
+$G$ & 年新增率，题目给定 $G=0.07$ & 无量纲，$G > 0$ \\
+$p_1$ & 自理$\to$半失能的年转移概率 & 无量纲，$0 < p_1 < 1$ \\
+$p_2$ & 半失能$\to$失能的年转移概率 & 无量纲，$0 < p_2 < 1$ \\
+$\mu$ & 日死亡率（待推导） & 无量纲 \\
+$t_1$ & 自理$\to$半失能的日转移率（待推导） & 无量纲 \\
+$t_2$ & 半失能$\to$失能的日转移率（待推导） & 无量纲 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{模型建立}
+
+\paragraph{日度参数转换}
+模型采用逐日递推，需将年度参数转化为日度参数。核心思想：若一年365天每天施加相同的日度率，则累积效果应等于年度率。
+
+日死亡率 $\mu$ 的推导：
+已知年死亡率 $M=0.05$，即一个老人存活一年后死亡的概率为 $M$，存活概率为 $1-M$。设日死亡率为 $\mu$，则任意一天存活的概率为 $1-\mu$。各天存活事件相互独立，连续存活365天的概率为 $(1-\mu)^{365}$，应等于 $1-M$：
+\begin{equation}
+(1-\mu)^{365} = 1 - M
+\tag{1.1}
+\end{equation}
+解得：
+\begin{equation}
+\mu = 1 - (1 - M)^{1/365}
+\tag{1.2}
+\end{equation}
+代入 $M=0.05$，得 $\mu \approx 0.0001405$。
+
+日转移率 $t_1$、$t_2$ 的推导：
+\begin{align}
+(1-t_1)^{365} &= 1 - p_1 &\Rightarrow\quad t_1 &= 1 - (1 - p_1)^{1/365} \tag{1.3}\\
+(1-t_2)^{365} &= 1 - p_2 &\Rightarrow\quad t_2 &= 1 - (1 - p_2)^{1/365} \tag{1.4}
+\end{align}
+
+年新增方式：年新增率 $G=0.07$ 表示每年初在上年末总人口的基础上增加 $G$ 倍，新增人口全部归入自理类：
+\begin{equation}
+C_{k}^{(0)} = C_{k-1} + T_{k-1} \cdot G
+\tag{1.5}
+\end{equation}
+
+\paragraph{年-日双层递推模型}
+模型采用年-日双层结构：每年初新增一次，之后以日为步长循环365次，依次执行死亡和状态转移。
+
+外层循环——年初新增：
+\begin{equation}
+\begin{cases}
+C_k^{(0)} = C_{k-1} + T_{k-1} \cdot G \\
+S_k^{(0)} = S_{k-1} \\
+D_k^{(0)} = D_{k-1}
+\end{cases}
+\tag{1.6}
+\end{equation}
+
+内层循环——逐日死亡与转移。Step 1~死亡（三类同步衰减）：
+\begin{equation}
+\begin{cases}
+C' = C_{t-1} \cdot (1 - \mu) \\
+S' = S_{t-1} \cdot (1 - \mu) \\
+D' = D_{t-1} \cdot (1 - \mu)
+\end{cases}
+\tag{1.7}
+\end{equation}
+
+Step 2~状态转移：
+\begin{equation}
+\begin{cases}
+\Delta_C = C' \cdot t_1 \\
+\Delta_S = S' \cdot t_2
+\end{cases}
+\quad\Rightarrow\quad
+\begin{cases}
+C_t = C'(1 - t_1) \\
+S_t = S' + C' \cdot t_1 - S' \cdot t_2 \\
+D_t = D' + S' \cdot t_2
+\end{cases}
+\tag{1.8}
+\end{equation}
+
+逐日递推的完整形式（从第 $t-1$ 天到第 $t$ 天）：
+\begin{equation}
+\boxed{
+\begin{cases}
+C_t = C_{t-1} (1 - \mu) (1 - t_1) \\
+S_t = S_{t-1} (1 - \mu) (1 - t_2) + C_{t-1} (1 - \mu) \cdot t_1 \\
+D_t = D_{t-1} (1 - \mu) + S_{t-1} (1 - \mu) \cdot t_2
+\end{cases}
+}
+\tag{1.9}
+\end{equation}
+
+将式~(1.9)逐日迭代 $365$ 次，得到第 $k$ 年的年末人数：
+\begin{equation}
+(C_k, S_k, D_k) = \text{迭代365次后的} \; (C_t, S_t, D_t)
+\tag{1.10}
+\end{equation}
+
+完整算法流程：
+\begin{enumerate}
+    \item 令 $(C_0, S_0, D_0)$ 为第0年末（即第1年初）各小区实际人数。
+    \item 对每个年份 $k = 1, 2, \dots, 5$：
+    \begin{enumerate}
+        \item 按式~(1.6)执行年初新增，得到 $C_k^{(0)}, S_k^{(0)}, D_k^{(0)}$。
+        \item 以 $C_k^{(0)}, S_k^{(0)}, D_k^{(0)}$ 为初始值，将式~(1.9)迭代 $365$ 次，得到年末人数 $C_k, S_k, D_k$。
+    \end{enumerate}
+    \item 输出各年末的三类人口数据。
+\end{enumerate}
+
+\subsubsection{增长率指标}
+第1年增长率：
+\begin{equation}
+g_1 = \frac{T_{365} - T_0}{T_0}
+\tag{1.11}
+\end{equation}
+
+5年复合年均增长率（CAGR）：
+\begin{equation}
+r = \left(\frac{T_{1825}}{T_0}\right)^{1/5} - 1
+\tag{1.12}
+\end{equation}
+
+%=============================================================================
+% 问题1.2
+%=============================================================================
+\subsection{问题1.2：第5年末各小区理论月需求计算}
+
+\subsubsection{问题重述}
+已知各服务项目（助餐、日间照料、上门护理、康复理疗、助浴、紧急救助）的月均需求次数，以及问题1.1预测得到的第5年末各小区三类老人人数，要求计算第5年末各小区对各服务项目的理论月需求次数。
+
+\subsubsection{模型假设}
+\begin{enumerate}
+    \item 各服务的月需求次数率（人均需求率）在5年内保持不变。
+    \item 需求次数与人数成正比，即需求率不随人数规模变化。
+    \item 不同老人之间的需求相互独立，可直接累加。
+    \item 需求次数必须为整数，采用四舍五入取整。
+\end{enumerate}
+
+\subsubsection{符号说明}
+\begin{table}[htbp]
+\centering
+\caption{问题1.2 符号说明}
+\label{tab:symbols_1.2}
+\begin{tabular}{@{} l p{4.5cm} p{3.5cm} @{}}
+\toprule
+符号 & 含义 & 单位/取值范围 \\
+\midrule
+$i$ & 小区编号 & $i = A, B, C, \ldots, J$ \\
+$n_C^{(i)}, n_S^{(i)}, n_D^{(i)}$ & 小区 $i$ 第5年末三类老人人数 & 人，$n \geq 0$ \\
+$svc$ & 服务项目 & 助餐、日间照料等六项 \\
+$r_{svc}^C, r_{svc}^S, r_{svc}^D$ & 三类老人对服务 $svc$ 的人均月需求次数 & 次/人/月 \\
+$Q_{i,svc}$ & 小区 $i$ 对服务 $svc$ 的三类老人理论月需求总和 & 次，整数 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{模型建立}
+单类老人需求计算：
+\begin{align}
+q_{i,svc}^C &= \text{round}\bigl(n_C^{(i)} \cdot r_{svc}^C\bigr) \tag{2.1} \\
+q_{i,svc}^S &= \text{round}\bigl(n_S^{(i)} \cdot r_{svc}^S\bigr) \tag{2.2} \\
+q_{i,svc}^D &= \text{round}\bigl(n_D^{(i)} \cdot r_{svc}^D\bigr) \tag{2.3}
+\end{align}
+
+总需求计算：
+\begin{equation}
+Q_{i,svc} = q_{i,svc}^C + q_{i,svc}^S + q_{i,svc}^D
+\tag{2.4}
+\end{equation}
+
+%=============================================================================
+% 问题1.3
+%=============================================================================
+\subsection{问题1.3：消费约束下实际月需求计算}
+
+\subsubsection{问题重述}
+已知各小区人均月收入、各服务项目营收单价、三类老人的消费比例上限，以及问题1.2计算得到的理论月需求次数，要求在消费约束条件下计算各小区各服务项目的实际月需求次数。当理论消费超出上限时，采用等比例缩减策略。
+
+\subsubsection{模型假设}
+\begin{enumerate}
+    \item 消费上限是硬约束，超出上限时必须缩减需求。
+    \item 当需要缩减时，所有服务项目的需求次数按相同比例缩小，不偏袒任何单项服务。
+    \item 同一小区同一类老人的缩减系数对所有服务项目相同。
+    \item 各小区人均月收入 $I_i$ 在5年内保持不变。
+    \item 各服务营收单价 $p_{svc}$ 在5年内保持不变。
+    \item 每类老人的消费决策相互独立，不存在跨类别的消费转移。
+\end{enumerate}
+
+\subsubsection{符号说明}
+\begin{table}[htbp]
+\centering
+\caption{问题1.3 符号说明}
+\label{tab:symbols_1.3}
+\begin{tabular}{@{} l p{5.5cm} l @{}}
+\toprule
+符号 & 含义 & 单位/取值范围 \\
+\midrule
+$I_i$ & 小区 $i$ 人均月收入 & 元，$I_i > 0$ \\
+$k_C, k_S, k_D$ & 自理、半失能、失能老人的消费比例上限 & 无量纲，$0 < k < 1$ \\
+$p_{svc}$ & 服务 $svc$ 的营收单价 & 元/次，$p_{svc} > 0$ \\
+$L_{i,C}, L_{i,S}, L_{i,D}$ & 小区 $i$ 各类老人每月消费上限 & 元 \\
+$w_{i,C}, w_{i,S}, w_{i,D}$ & 小区 $i$ 各类老人人均理论月消费 & 元 \\
+$f_{i,C}, f_{i,S}, f_{i,D}$ & 小区 $i$ 各类老人的需求缩减系数 & 无量纲，$0 < f \leq 1$ \\
+$a_{i,svc}^C, a_{i,svc}^S, a_{i,svc}^D$ & 小区 $i$ 各类老人对服务 $svc$ 的实际月需求 & 次，整数 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{模型建立}
+消费上限：
+\begin{equation}
+L_{i,C} = I_i \cdot k_C,\quad L_{i,S} = I_i \cdot k_S,\quad L_{i,D} = I_i \cdot k_D
+\tag{3.1}
+\end{equation}
+
+人均理论月消费：
+\begin{equation}
+w_{i,C} = \sum_{svc} r_{svc}^C \cdot p_{svc}
+\tag{3.2}
+\end{equation}
+
+缩减系数：
+\begin{equation}
+f_{i,C} = \min\left(1,\; \frac{L_{i,C}}{w_{i,C}}\right)
+\tag{3.3}
+\end{equation}
+
+实际需求计算：
+\begin{equation}
+a_{i,svc}^C = \text{round}\bigl(n_C^{(i)} \cdot r_{svc}^C \cdot f_{i,C}\bigr)
+\tag{3.4}
+\end{equation}
+
+$f_{i,S}$、$f_{i,D}$ 以及 $a_{i,svc}^S$、$a_{i,svc}^D$ 的计算同理。
+
+等比例缩减的性质：
+\begin{equation}
+\frac{a_{i,svc_1}^C}{a_{i,svc_2}^C} \approx \frac{r_{svc_1}^C}{r_{svc_2}^C}
+\tag{3.5}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 问题2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{问题2：服务站选址与规模优化}
+
+\subsection{符号说明}
+\begin{table}[h]
+\centering
+\begin{tabular}{>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{6cm} >{\raggedright\arraybackslash}p{4cm}}
+\toprule
+符号 & 含义 & 单位/取值范围 \\
+\midrule
+$i$ & 小区编号 & $i = A,B,\dots,J$ \\
+$j$ & 服务站编号（建站的小区） & $j \in \mathcal{J}$ \\
+$\mathcal{J}$ & 实际建设的服务站集合 & 由决策变量决定 \\
+$x_j$ & 是否在小区 $j$ 建站 & $x_j \in \{0,1\}$ \\
+$s_j$ & 服务站 $j$ 的规模 & $s_j \in \{0,1,2,3\}$ \\
+$C_{s_j}$ & 规模 $s_j$ 的日最大服务人次 & $C_1=1000,\ C_2=2000,\ C_3=3000$（人/日） \\
+$B_{s_j}$ & 规模 $s_j$ 的一次性建设成本 & $B_1=18,\ B_2=32,\ B_3=45$（万元） \\
+$d_{ij}$ & 小区 $i$ 到服务站 $j$ 的距离 & 米 \\
+$R$ & 有效服务半径 & $R=1000$ 米 \\
+$P_i$ & 小区 $i$ 第5年末老年人口总数 & 人 \\
+$D_i$ & 小区 $i$ 的日理论需求人次 & 人/日 \\
+$U_j$ & 服务站 $j$ 的利用率 & $U_j = \frac{\text{实际有效服务人次}}{C_{s_j}}$ \\
+$S_{ij}$ & 小区 $i$ 对服务站 $j$ 的综合满意度 & 无量纲，$[0.6,1.0]$ \\
+$S1_{ij}$ & 距离满意度 & 无量纲 \\
+$S2_j$ & 响应满意度 & 无量纲 \\
+$S3_j$ & 价格满意度（问题2中设为平价） & $S3_j = 1.0$ \\
+$p_{\rm svc}^{\rm rev}$ & 服务 $svc$ 的营收单价 & 元/次 \\
+$p_{\rm svc}^{\rm cost}$ & 服务 $svc$ 的单次直接支出 & 元/次 \\
+$Q_{i,\rm svc}$ & 小区 $i$ 对服务 $svc$ 的月理论需求次数 & 次/月 \\
+$\alpha$ & 权重系数，平衡覆盖率与满意度 & $\alpha \in [0,1]$ \\
+$n$ & 小区总数 & $n=10$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{决策变量}
+\[
+x_j \in \{0,1\},\quad s_j \in \{0,1,2,3\},\qquad \forall j = 1,\dots,n
+\]
+当 $x_j = 1$ 时，$s_j \ge 1$；当 $x_j = 0$ 时，$s_j = 0$。
+
+\subsection{目标函数（双目标加权）}
+\[
+\max \quad F(\alpha) = \alpha \cdot \text{Coverage} + (1 - \alpha) \cdot \text{Satisfaction}
+\]
+其中：
+\[
+\text{Coverage} = \frac{\displaystyle\sum_{i=1}^{n} P_i \cdot \mathbf{1}_{\{\text{小区 } i \text{ 被覆盖}\}}}{\displaystyle\sum_{i=1}^{n} P_i}
+\]
+\[
+\text{Satisfaction} = \frac{1}{n}\sum_{i=1}^{n} S_i
+\]
+这里 $S_i$ 为小区 $i$ 最终获得的综合满意度（若未被覆盖则 $S_i = 0$）。
+
+\subsection{约束条件}
+
+\subsubsection{建设预算约束}
+\[
+\sum_{j: x_j = 1} B_{s_j} \le 120 \quad (\text{万元})
+\]
+
+\subsubsection{服务半径约束}
+仅当 $d_{ij} \le R$ 时，小区 $i$ 才可能被服务站 $j$ 服务。
+
+\subsubsection{容量约束}
+每个服务站 $j$ 的实际有效服务人次（日）不得超过其容量：
+\[
+\sum_{i \in \mathcal{C}_j} D_i \cdot S_{ij} \le C_{s_j}, \qquad \forall j
+\]
+其中 $\mathcal{C}_j$ 为分配给服务站 $j$ 的小区集合。
+$D_i$ 由问题1.3计算的月需求 $Q_{i,\text{svc}}$ 转换得到：
+\[
+D_i = \frac{1}{30} \sum_{\text{svc}} Q_{i,\text{svc}}
+\]
+
+\subsection{满意度计算模型}
+
+\subsubsection{综合满意度}
+\[
+S_{ij} = 0.2 \cdot S1_{ij} + 0.3 \cdot S2_j + 0.5 \cdot S3_j
+\]
+问题2中采用平价策略，故 $S3_j = 1.0$。
+
+\subsubsection{距离满意度 $S1_{ij}$}
+\[
+S1_{ij} = 
+\begin{cases}
+1.00, & d_{ij} \le 300 \\[2pt]
+0.90, & 300 < d_{ij} \le 500 \\[2pt]
+0.75, & 500 < d_{ij} \le 650 \\[2pt]
+0.60, & 650 < d_{ij} \le 1000 \\[2pt]
+0, & d_{ij} > 1000
+\end{cases}
+\]
+
+\subsubsection{响应满意度 $S2_j$}
+设服务站 $j$ 的利用率为 $U_j$：
+\[
+U_j = \frac{\displaystyle\sum_{i \in \mathcal{C}_j} D_i \cdot S_{ij}}{C_{s_j}}
+\]
+则：
+\[
+S2_j = 
+\begin{cases}
+1.00, & U_j \le 0.60 \\[2pt]
+0.93, & 0.60 < U_j \le 0.75 \\[2pt]
+0.85, & 0.75 < U_j \le 0.85 \\[2pt]
+0.72, & 0.85 < U_j \le 0.95 \\[2pt]
+0.60, & 0.95 < U_j \le 1.00
+\end{cases}
+\]
+
+\subsection{小区分配与迭代收敛}
+每个小区 $i$ 从所有覆盖它的服务站中选择综合满意度 $S_{ij}$ 最高的站，并且该站剩余容量足够接纳小区全部需求。若同时多个小区竞争同一服务站，按满意度降序分配（延迟接受匹配）。未被分配的小区视为未覆盖。
+
+由于 $S2_j$ 依赖于 $U_j$，而 $U_j$ 依赖于分配结果，需迭代求解：
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+\item 初始设 $S2_j^{(0)} = 1.0$，计算 $S_{ij}^{(0)}$，进行初次分配。
+\item 根据当前分配结果计算各站利用率 $U_j^{(t)}$，更新 $S2_j^{(t)}$。
+\item 用 $S2_j^{(t)}$ 重算 $S_{ij}$ 并重新分配；每3轮重复一次此操作，取历史最优方案。
+\end{enumerate}
+
+\subsection{服务站年度利润计算（评价指标）}
+
+\subsubsection{年收入}
+\[
+R_j = 12 \sum_{i \in \mathcal{C}_j} \sum_{\text{svc}} \left( Q_{i,\text{svc}} \cdot S_{ij} \cdot p_{\text{svc}}^{\text{rev}} \right)
+\]
+
+\subsubsection{年直接支出}
+\[
+C_j^{\text{dir}} = 12 \sum_{i \in \mathcal{C}_j} \sum_{\text{svc}} \left( Q_{i,\text{svc}} \cdot S_{ij} \cdot p_{\text{svc}}^{\text{cost}} \right)
+\]
+
+\subsubsection{年固定成本}
+\[
+C_j^{\text{fixed}} = \frac{B_{s_j} \times 10^4}{20} + C_j^{\text{op}} \times 365
+\]
+\begin{itemize}[leftmargin=*]
+\item $\frac{B_{s_j} \times 10^4}{20}$：建设成本按20年等额折旧（元/年）
+\item $C_j^{\text{op}}$：日管理成本（元/日），小型2000，中型3200，大型4400
+\end{itemize}
+
+\subsubsection{年利润}
+\[
+\Pi_j = R_j - C_j^{\text{dir}} - C_j^{\text{fixed}}
+\]
+
+\subsection{枚举与求解算法概述}
+
+\subsubsection{枚举空间}
+服务站数量 $k = 2,3,4,5,6$，选址组合 $\binom{10}{k}$，规模组合 $3^k$，总方案数：
+\[
+\sum_{k=2}^{6} \binom{10}{k} 3^k
+\]
+
+\subsubsection{聚类过滤}
+对小区进行层次聚类（距离矩阵，平均链接，阈值700米），要求每个聚类至少有一个服务站，且聚类内建设成本不超过该聚类人口占比 $\times$ 总预算 $\times 1.5$。
+
+\subsubsection{多策略种子生成}
+对每个方案生成5种初始分配（延迟接受匹配、按可覆盖数升序、按需求降序、按距离升序、随机顺序），分别进行爬山优化。
+
+\subsubsection{$\alpha$感知爬山}
+对每个 $\alpha \in \{0.00,0.05,\dots,1.00\}$（共20个），从最佳种子出发，进行邻域搜索（迁移、添加操作），每3轮重新收敛 $S2$，取历史最优。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 问题3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{问题3：服务定价与政府补贴优化}
+
+\subsection{问题重述}
+在问题2确定的最优选址与规模方案基础上，政府决定除紧急救助外的其他服务按有效服务人次补贴2元/人次，单个服务站每日补贴有上限（小型1000元、中型1800元、大型2600元），紧急救助免费不计补贴。养老机构利润率不超过8\%。要求：
+\begin{enumerate}
+    \item 以最大化老人满意度为目标建立优化模型，确定各项服务最优定价。
+    \item 求解最优定价，计算各站年度利润、利润率及小区满意度。
+    \item 分析定价与补贴对三类老人服务可及性的影响。
+\end{enumerate}
+
+\subsection{模型准备：帕累托前沿与方案选择}
+问题2为双目标优化（最大化覆盖率与平均满意度），以权重$\alpha$加权求和：
+\begin{equation}
+\text{score}(x;\alpha) = \alpha\cdot f_1(x) + (1-\alpha)\cdot f_2(x)
+\label{eq:pareto}
+\end{equation}
+不同$\alpha$得到帕累托前沿上的不同折中方案。采用膝点法自动选$\alpha$：将前沿上非支配方案按$\text{cov}$排序，对第$i$点计算
+\begin{equation}
+\kappa_i^L = \frac{\text{sat}_i - \text{sat}_{i-1}}{\text{cov}_i - \text{cov}_{i-1} + \varepsilon},\;
+\kappa_i^R = \frac{\text{sat}_{i+1} - \text{sat}_i}{\text{cov}_{i+1} - \text{cov}_i + \varepsilon},\;
+\text{knee}_i = \frac{|\kappa_i^R - \kappa_i^L|}{1 + |\kappa_i^L| + |\kappa_i^R|}
+\label{eq:knee}
+\end{equation}
+则$\alpha^* = \arg\max \text{knee}_i$，对应方案作为问题3的输入。
+
+\subsection{符号说明}
+\begin{table}[htbp]
+\centering
+\caption{问题3 符号说明}
+\begin{tabular}{@{}lll@{}}
+\toprule
+符号 & 含义 & 单位 \\
+\midrule
+$i$ & 小区编号 & $i=A,\ldots,J$ \\
+$j$ & 服务站编号 & $j=1,2,\ldots$ \\
+$\text{svc}$ & 服务项目 & 助餐、日间照料等六项 \\
+$\text{typ}$ & 老人类型 & 自理、半失能、失能 \\
+$n_i^{\text{typ}}$ & 小区$i$第5年末类型typ老人人数 & 人 \\
+$r_{\text{svc}}^{\text{typ}}$ & 类型typ老人对服务svc的人均月需求 & 次/人/月 \\
+$I_i$ & 小区$i$人均月收入 & 元 \\
+$k^{\text{typ}}$ & 类型typ老人消费比例上限 & 无量纲 \\
+$p_{\text{svc}}^0$ & 服务svc基准价（直接支出） & 元/次 \\
+$p_{j,\text{svc}}$ & 服务站$j$对服务svc的定价 & 元/次 \\
+$d_{ij}$ & 小区$i$到服务站$j$的距离 & m \\
+$S1_{ij},S2_j,S3_{ij}$ & 距离、响应、价格满意度 & 无量纲 \\
+$Q_j^{\text{cap}}$ & 服务站$j$日容量上限 & 人次/日 \\
+$Q_{i,\text{svc}}$ & 小区$i$对服务svc的实际月需求 & 次/月 \\
+$H_j^{\text{cap}}$ & 服务站$j$日补贴上限 & 元 \\
+$C_j^{\text{op}}, C_j^{\text{build}}$ & 日运营管理成本、建设成本 & 元/日、万元 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{满意度模型}
+综合满意度$S$由距离、响应、价格三部分加权：
+\begin{equation}
+S_{ij} = 0.2\cdot S1_{ij} + 0.3\cdot S2_j + 0.5\cdot S3_{ij}
+\label{eq:S}
+\end{equation}
+
+距离满意度$S1$按附件5规则：
+\begin{equation}
+S1(d)=
+\begin{cases}
+1.00,\;d\leq300 & 0.90,\;300<d\leq500 \\
+0.75,\;500<d\leq650 & 0.60,\;650<d\leq1000 \\
+0,\;d>1000 &
+\end{cases}
+\label{eq:S1}
+\end{equation}
+
+服务响应满意度$S2$取决于利用率$U_j$：
+\begin{equation}
+U_j = \frac{1}{Q_j^{\text{cap}}}\sum_{i\in\mathcal{C}_j}\frac{\sum_{\text{svc}}Q_{i,\text{svc}}}{30}\cdot S_{ij}
+\label{eq:U}
+\end{equation}
+\begin{equation}
+S2(U)=
+\begin{cases}
+1.00,\;U\leq0.60 & 0.93,\;0.60<U\leq0.75 \\
+0.85,\;0.75<U\leq0.85 & 0.72,\;0.85<U\leq0.95 \\
+0.60,\;U>0.95 &
+\end{cases}
+\label{eq:S2}
+\end{equation}
+$S_{ij}$与$S2_j$循环依赖，采用阻尼迭代求解：
+\begin{equation}
+S2^{(t+1)} = 0.5\cdot S2^{(t)} + 0.5\cdot S2(U^{(t)}),\quad |S2^{(t+1)}-S2^{(t)}|<10^{-4}\text{时收敛}
+\label{eq:S2_iter}
+\end{equation}
+
+价格满意度$S3$关于价格乘子$\lambda=p_{j,\text{svc}}/p_{\text{svc}}^0$：
+\begin{equation}
+S3(\lambda)=
+\begin{cases}
+1.00,\;\lambda\leq1.00 & 0.90,\;1.00<\lambda\leq1.10 \\
+0.75,\;1.10<\lambda\leq1.20 & 0.60,\;\lambda>1.20
+\end{cases}
+\label{eq:S3}
+\end{equation}
+小区总体$S3_{ij}$按需求人次加权：
+\begin{equation}
+S3_{ij} = \frac{\sum_{\text{svc}}Q_{i,\text{svc}}\cdot S3(\lambda_{j,\text{svc}})}{\sum_{\text{svc}}Q_{i,\text{svc}}}
+\label{eq:S3w}
+\end{equation}
+
+\subsection{需求计算模型}
+给定定价$p_{j,\text{svc}}$后，小区$i$类型typ老人的：
+\begin{align}
+\text{消费上限:}\quad & L_i^{\text{typ}} = I_i\cdot k^{\text{typ}} \\
+\text{人均理论消费:}\quad & w_i^{\text{typ}} = \sum_{\text{svc}} r_{\text{svc}}^{\text{typ}}\cdot p_{j,\text{svc}} \\
+\text{缩减系数:}\quad & f_i^{\text{typ}} = \min\left(1,\; L_i^{\text{typ}}/w_i^{\text{typ}}\right) \\
+\text{实际月需求:}\quad & a_{i,\text{svc}}^{\text{typ}} = \text{round}\left(n_i^{\text{typ}}\cdot r_{\text{svc}}^{\text{typ}}\cdot f_i^{\text{typ}}\right) \\
+\text{总需求:}\quad & Q_{i,\text{svc}} = a_{i,\text{svc}}^C + a_{i,\text{svc}}^S + a_{i,\text{svc}}^D
+\label{eq:demand}
+\end{align}
+
+\subsection{利润与补贴模型}
+服务站$j$月有效人次$V_{j,\text{svc}} = \sum_{i\in\mathcal{C}_j} Q_{i,\text{svc}}\cdot S_{ij}$。各项年度指标：
+\begin{align}
+\text{年营收:}\quad & R_j = 12 \sum_{\text{svc}\neq\text{紧急救助}} V_{j,\text{svc}}\cdot p_{j,\text{svc}} \\
+\text{年直接支出:}\quad & C_j^{\text{dir}} = 12 \sum_{\text{svc}} V_{j,\text{svc}}\cdot p_{\text{svc}}^0 \\
+\text{年补贴:}\quad & H_j = \min\left(12\sum_{\text{svc}\neq\text{紧急救助}} V_{j,\text{svc}}\times 2,\; H_j^{\text{cap}}\times 365\right) \\
+\text{年固定成本:}\quad & F_j = C_j^{\text{op}}\times 365 + \frac{C_j^{\text{build}}\times10000}{20} \\
+\text{年利润:}\quad & \Pi_j = R_j - C_j^{\text{dir}} + H_j - F_j \\
+\text{利润率:}\quad & \eta_j = \frac{\Pi_j}{F_j},\quad 0\leq\eta_j\leq0.08
+\label{eq:profit}
+\end{align}
+
+\subsection{定价优化模型}
+对每个服务站$j$独立求解。决策变量为5类非紧急服务的价格乘子：
+\begin{equation}
+\lambda_{j,\text{svc}}\in\Lambda=\{0.90,0.95,1.00,1.05,1.10,1.15,1.20,1.30,1.50\}
+\label{eq:Lambda}
+\end{equation}
+目标为最大化覆盖小区的平均综合满意度：
+\begin{equation}
+\boxed{\max_{\lambda_{j,\text{svc}}}\; \bar{S}_j = \frac{1}{|\mathcal{C}_j|}\sum_{i\in\mathcal{C}_j} S_{ij},\quad \text{s.t.}\; \lambda_{j,\text{svc}}\in\Lambda,\; 0\leq\eta_j\leq0.08}
+\label{eq:opt}
+\end{equation}
+搜索空间$9^5=59049$种组合，逐次计算需求、满意度、利润，取可行解中$\bar{S}_j$最大者。
+
+\subsection{可及性分析}
+对比原营收价$p_{\text{svc}}^{\text{rev}}$与最优价$p_{j,\text{svc}}$下各类老人的经济负担变化：
+\begin{align}
+\text{原价人均月消费:}\quad & w_i^{\text{typ,orig}} = \sum_{\text{svc}} r_{\text{svc}}^{\text{typ}}\cdot p_{\text{svc}}^{\text{rev}} \\
+\text{现价人均月消费:}\quad & w_i^{\text{typ,opt}} = \sum_{\text{svc}} r_{\text{svc}}^{\text{typ}}\cdot p_{j,\text{svc}} \\
+\text{实际月支出:}\quad & \text{oop}_i^{\text{typ}} = \min\left(w_i^{\text{typ}},\; L_i^{\text{typ}}\right) \\
+\text{月节省:}\quad & \Delta\text{oop}_i^{\text{typ}} = \text{oop}_i^{\text{typ,orig}} - \text{oop}_i^{\text{typ,opt}}
+\label{eq:access}
+\end{align}
+地理可及性以$S1$定量评估，信息可及性定性讨论。
+
+\end{document}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>full</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+table {
+display: table; overflow: auto;
+max-width: 100%;
+border-collapse: collapse;
+page-break-inside: avoid;
+}
+table th {
+text-align: center;
+font-weight: bold;
+}
+table td,table th {
+border: 1px solid #dfe2e5;
+padding: 6px 13px;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #c6cbd1;
+}
+table tr:nth-child(2n) {
+background-color: #f6f8fa;
+}
+</style>
+</head>
+<body>
+<h1 id="导弹轨迹">5.1.1 导弹轨迹</h1>
+<p>根据题意，所有的导弹均以
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>300</mn><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">s</mi></mrow></mrow><annotation encoding="application/x-tex">300\mathrm{m / s}</annotation></semantics></math>
+的速度做匀速直线运动，速度的方向沿着导弹与原点的连线方向，利用
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐯</mi><mrow><mi>m</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">\mathbf{v}_{m,i}</annotation></semantics></math>
+表示导弹
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+的速度向量，
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>m</mi></msub><annotation encoding="application/x-tex">v_{m}</annotation></semantics></math>
+表示导弹的速度大小，其值为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>300</mn><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">s</mi></mrow><mo>,</mo><msub><mi>𝐏</mi><mrow><mi>m</mi><mo>,</mo><mi>i</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">300\mathrm{m / s},\mathbf{P}_{m,i}(0)</annotation></semantics></math>
+表示导弹
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+在初始时刻的位置向量，方向由原点指向导弹，
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+的取值为1，2，3。</p>
+<p>根据方向向量的计算方法可知导弹
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+的速度向量可以表示为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mrow><mi>m</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>−</mi><msub><mi>𝐏</mi><mrow><mi>m</mi><mo>,</mo><mi>i</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mo stretchy="false" form="postfix">∥</mo><msub><mi>𝐏</mi><mrow><mi>m</mi><mo>,</mo><mi>i</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">∥</mo></mrow></mfrac><mo>⋅</mo><msub><mi>v</mi><mi>m</mi></msub><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\mathbf {v} _ {m, i} = \frac {- \mathbf {P} _ {m , i} (0)}{\| \mathbf {P} _ {m , i} (0) \|} \cdot v _ {m} \quad (i = 1, 2, 3) \tag {5.1}
+</annotation></semantics></math></p>
+<p>知道了速度向量后根据匀速直线运动的性质可以算出
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+时刻导弹
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+的位置函数即：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐏</mi><mrow><mi>m</mi><mo>,</mo><mi>i</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>𝐏</mi><mrow><mi>m</mi><mo>,</mo><mi>i</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>𝐯</mi><mrow><mi>m</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>⋅</mo><mi>t</mi><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\mathbf {P} _ {m, i} (t) = \mathbf {P} _ {m, i} (0) + \mathbf {v} _ {m, i} \cdot t \quad (i = 1, 2, 3) \tag {5.2}
+</annotation></semantics></math></p>
+<h1 id="无人机轨迹">5.1.2 无人机轨迹</h1>
+<p>在无人机被指派任务后，无人机将在等高度上沿着确定的航向做匀速直线运动，
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+方向上的速度分量为0，因此只需要知道无人机的飞行航向角就可以确定出无人机的速度向量，假设无人机
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+的航线与
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+轴的正方向的夹角为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\theta_{j}</annotation></semantics></math>
+，那么速度向量为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mi>j</mi></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mi>j</mi></mrow></msub><mi mathvariant="normal">cos</mi><msub><mi>θ</mi><mi>j</mi></msub><mo>,</mo><msub><mi>v</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mi>j</mi></mrow></msub><mi mathvariant="normal">sin</mi><msub><mi>θ</mi><mi>j</mi></msub><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\mathbf {v} _ {f y, j} = \left(v _ {f y, j} \cos \theta_ {j}, v _ {f y, j} \sin \theta_ {j}, 0\right) (j = 1, \dots , 5) \tag {5.3}
+</annotation></semantics></math></p>
+<p>同样的有了无人机的速度向量和初始的位置就能得到无人机的位置函数：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐏</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mi>j</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>𝐏</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mi>j</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>𝐯</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mi>j</mi></mrow></msub><mo>⋅</mo><mi>t</mi><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\mathbf {P} _ {f y, j} (t) = \mathbf {P} _ {f y, j} (0) + \mathbf {v} _ {f y, j} \cdot t \quad (j = 1, \dots , 5) \tag {5.4}
+</annotation></semantics></math></p>
+<h1 id="烟幕弹轨迹">5.1.3 烟幕弹轨迹</h1>
+<p>无人机在飞行到指定地点时投放烟幕弹，考虑到重力和惯性的双重作用，烟幕弹投放后做抛体运动，忽略空气阻力的前提下，烟幕弹速度在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mi>O</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">xOy</annotation></semantics></math>
+平面上的投影由于惯性的作用，将维持在此前无人机的速度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mrow><mi>f</mi><mn>0</mn><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">v_{f0j}</annotation></semantics></math>
+，而在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+方向上烟幕弹将在重力加速度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+下做自由落体运动，将第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+个无人机发射出的第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+个烟幕弹的速度定义为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐯</mi><mrow><mi mathvariant="normal">s</mi><mo mathvariant="normal">,</mo><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow></msub><annotation encoding="application/x-tex">\mathbf{v}_{\mathrm{s,jk}}</annotation></semantics></math>
+，则
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐯</mi><mrow><mi mathvariant="normal">s</mi><mo mathvariant="normal">,</mo><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow></msub><annotation encoding="application/x-tex">\mathbf{v}_{\mathrm{s,jk}}</annotation></semantics></math>
+可以表示为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐯</mi><mrow><mi mathvariant="normal">s</mi><mo>,</mo><mrow><mi mathvariant="normal">j</mi><mi mathvariant="normal">k</mi></mrow></mrow></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>v</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mi>j</mi></mrow></msub><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><msub><mi>θ</mi><mi>j</mi></msub><mo>,</mo><msub><mi>v</mi><mrow><mi>f</mi><mi>y</mi><mo>,</mo><mi>j</mi></mrow></msub><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><msub><mi>θ</mi><mi>j</mi></msub><mo>,</mo><msub><mi>v</mi><mrow><mi>j</mi><mi>k</mi><mo>,</mo><mi>z</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\mathbf {v} _ {\mathrm{s}, \mathrm{jk}} = (v _ {f y, j} \cos \theta_ {j}, v _ {f y, j} \sin \theta_ {j}, v _ {j k, z}) \quad (j = 1, \dots , 5) (k = 1, 2, 3) \tag {5.5}
+</annotation></semantics></math></p>
+<p>其中
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mrow><mi>j</mi><mi>k</mi><mo>,</mo><mi>z</mi></mrow></msub><annotation encoding="application/x-tex">v_{jk,z}</annotation></semantics></math>
+表示自由落体的速度大小，其值的大小为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mrow><mi>d</mi><mo>,</mo><mi>j</mi><mi>k</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><msub><mi>t</mi><mrow><mi>d</mi><mo>,</mo><mi>j</mi><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">g(t - t_{d,jk}), t_{d,jk}</annotation></semantics></math>
+是该烟幕弹的投放时间。假设在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mrow><mi>d</mi><mo>,</mo><mi>j</mi><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">t_{d,jk}</annotation></semantics></math>
+时刻，烟幕弹的坐标为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐏</mi><mrow><mi>s</mi><mo>,</mo><mi>j</mi><mi>k</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>t</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{P}_{s,jk}(t_d)</annotation></semantics></math>
+，由于烟幕弹在抛出瞬间的位移可以忽略不记，所以在投放时烟幕弹的坐标等价于无人机的坐标
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐏</mi><mrow><mi>f</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>j</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>t</mi><mi>d</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{P}_{f,y,j}(t_d)</annotation></semantics></math>
+，因此烟幕弹</p>
+</body>
+</html>

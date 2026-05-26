@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>full</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+table {
+display: table; overflow: auto;
+max-width: 100%;
+border-collapse: collapse;
+page-break-inside: avoid;
+}
+table th {
+text-align: center;
+font-weight: bold;
+}
+table td,table th {
+border: 1px solid #dfe2e5;
+padding: 6px 13px;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #c6cbd1;
+}
+table tr:nth-child(2n) {
+background-color: #f6f8fa;
+}
+</style>
+</head>
+<body>
+<p><img role="img" aria-label="image" src="data:image/jpeg;base64,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" alt="image" /></p>
+<p>图 2: 各问题关系图</p>
+<h1 id="二问题分析">二、问题分析</h1>
+<h1 id="问题一的分析">2.1 问题一的分析</h1>
+<p>问题一是基础情况，要求计算在给定参数下烟幕干扰弹对导弹M1的有效遮蔽时长，首先可以利用题目给定的参数算出烟幕弹起爆时刻烟幕弹和导弹的位置作为后续模型的初值，之后需要根据空间几何的知识找到满足使有效遮挡这一要求成立的几何关系，最后就可以根据初值和该几何关系从起爆时刻进行变步长搜索找出满足有效遮挡的时间范围。</p>
+<h1 id="问题二的分析">2.2 问题二的分析</h1>
+<p>问题二不同于问题一在给定的参数下求解，而是需要延用问题一的分析，把无人机航向速度、烟幕弹投放、引爆时间四个参数作为决策变量，以最大化有效遮挡时间作为目标函数建立单机单弹情况下的策略优化模型，在满足一些物理约束、运动学约束、边界条件的情况下求解出烟幕弹的最优投放策略。</p>
+<h1 id="问题三的分析">2.3 问题三的分析</h1>
+<p>问题三基于问题二的优化模型，需协调多枚烟幕弹的投放与起爆时序，避免时间重叠或遗漏，通过时序优化与协同控制延长总有效遮蔽时间。由于三枚烟幕弹是由同一无人机发射，其在空间上位置相差不远，考虑有效遮挡时，可能会存在单个云团不能有效遮挡，而多个云团耦合时会形成有效遮挡的情况。</p>
+<h1 id="问题四的分析">2.4 问题四的分析</h1>
+<p>问题四是多机单弹拦截同一目标的情况，与问题三的单机多弹模式不同，问题四的核心在于多无人机之间的空间协同和时间协调，这里不需要考虑投弹时间间隔，但是三枚导弹爆炸产生的云团应该避免在空间上过度重叠，同时时间上要保持连续。这需要建立多烟幕弹协同遮蔽的判定模型，分析多个云团在空间上的遮蔽效果叠加关系，在考虑各无人机独立决策的前提下，通过协同目标函数确保整体遮蔽效果最大化。</p>
+</body>
+</html>

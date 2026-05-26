@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>full</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+table {
+display: table; overflow: auto;
+max-width: 100%;
+border-collapse: collapse;
+page-break-inside: avoid;
+}
+table th {
+text-align: center;
+font-weight: bold;
+}
+table td,table th {
+border: 1px solid #dfe2e5;
+padding: 6px 13px;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #c6cbd1;
+}
+table tr:nth-child(2n) {
+background-color: #f6f8fa;
+}
+</style>
+</head>
+<body>
+<p>表 1 符号说明 (续)</p>
+<table>
+<tbody>
+<tr>
+<td>符号</td>
+<td>含义</td>
+<td>单位</td>
+</tr>
+<tr>
+<td>T</td>
+<td>总有效遮蔽时长</td>
+<td>s</td>
+</tr>
+<tr>
+<td>\Delta {t}_{b}</td>
+<td>烟幕弹投放至起爆的时间间隔</td>
+<td>s</td>
+</tr>
+<tr>
+<td>{y}_{ij}</td>
+<td>无人机 j 投向导弹 i 的烟幕弹数量</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h1 id="五模型准备">五、模型准备</h1>
+<p>根据题意，本文的所有求解都是建立在空间直角坐标系的基础上进行的，其中假目标视为一个质点作为坐标系原点，水平面作为坐标系的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mi>O</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">xOy</annotation></semantics></math>
+面，竖直向上的方向作为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+轴的正方向。现可以绘制出本文的空间直角坐标系，同时利用matlab对各导弹与各无人机的初始位置进行可视化处理：</p>
+<p><img role="img" aria-label="image" src="data:image/jpeg;base64,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" alt="image" /></p>
+<ol type="a">
+<li>坐标系示意图</li>
+</ol>
+<p><img role="img" aria-label="image" src="data:image/jpeg;base64,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" alt="image" /></p>
+<ol start="2" type="a">
+<li>初始坐标可视化图</li>
+</ol>
+<p>图 3: 无人机投弹干扰导弹示意图</p>
+<p>通过观察初始时刻的各导弹与无人机的位置，可以发现此时无人机群在导弹群前方按照扇形分布，形成了一个闪现拦截带，扇形的角度约为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>30</mn><mo>∘</mo></msup><annotation encoding="application/x-tex">30^{\circ}</annotation></semantics></math>
+，同时距离目标最远的导弹M1的导弹来向与无人机FY1几乎重合，这说明FY1后续可能对导弹迎面投放烟幕弹，形成烟墙进行阻拦。同时在高度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+上，无人机群成梯度配置，可以形成低位前伸烟幕拦截网。</p>
+<h1 id="运动轨迹方程">5.1 运动轨迹方程</h1>
+<p>要计算后面的有效遮挡时间，需要根据运动学知识求解出各个导弹、各个无人机及烟幕弹和云团的运动轨迹，再利用几何关系去判断是否满足有效遮蔽的条件，下面给出四个物体的运动轨迹函数推导。</p>
+</body>
+</html>
